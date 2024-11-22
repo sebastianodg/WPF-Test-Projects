@@ -2,7 +2,7 @@
 
 namespace DataTemplate.Model;
 
-internal class DtCadLayer
+public class DtCadLayer
 {
 	public String Name { get; set; }
 	public String Description { get; set; }

@@ -4,9 +4,13 @@ namespace DataTemplate;
 
 public partial class MainWindow : Window
 {
+	public MainWindowVM MainWindowViewModel { get; set; }
+
 	public MainWindow()
 	{
 		this.InitializeComponent();
-		this.DataContext = new MainWindowVM();
+
+		this.MainWindowViewModel = new MainWindowVM();
+		this.DataContext = this.MainWindowViewModel;
 	}
 }

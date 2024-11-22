@@ -3,7 +3,7 @@ using System.Windows.Media;
 
 namespace DataTemplate;
 
-internal class MainWindowVM
+public class MainWindowVM
 {
 	public DtCadLayer CadLayer { get; set; }
 
