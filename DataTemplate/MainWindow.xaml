@@ -9,7 +9,7 @@
 		    Width="720"
 				Height="340"
 				WindowStartupLocation="CenterScreen">
-	
+
 	<Window.DataContext>
 		<local:MainWindowVM x:Name="ViewModel"/>
 	</Window.DataContext>
@@ -34,32 +34,34 @@
 			<ContentControl Grid.Row="2" Grid.Column="0" Content="{Binding CadLayer}" VerticalAlignment="Center">
 				<ContentControl.ContentTemplate>
 					<DataTemplate>
-						<Grid Height="48">
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="48"/>
-								<ColumnDefinition Width="*"/>
-								<ColumnDefinition Width="Auto"/>
-							</Grid.ColumnDefinitions>
-							<Border Grid.Column="0"
+						<Border Background="{DynamicResource ControlFillColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}" Padding="8">
+							<Grid Height="48">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="48"/>
+									<ColumnDefinition Width="*"/>
+									<ColumnDefinition Width="Auto"/>
+								</Grid.ColumnDefinitions>
+								<Border Grid.Column="0"
 											Background="{DynamicResource AccentTextFillColorTertiaryBrush}"
 											BorderBrush="{DynamicResource TextFillColorPrimaryBrush}"
 											BorderThickness="2"
 											CornerRadius="{DynamicResource ControlCornerRadius}"/>
-							<StackPanel Grid.Column="1" Margin="12, 0, 0, 0">
-								<TextBlock Style="{DynamicResource SubtitleTextBlockStyle}" Text="{Binding Name}"/>
-								<TextBlock Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding Description}"/>
-							</StackPanel>
-							<StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Bottom">
-								<Button FontFamily="Segoe Fluent Icons" Margin="0, 0, 4, 0" Content="&#xEA80;"/>
-								<Button FontFamily="Segoe Fluent Icons" Content="&#xE72E;"/>
-							</StackPanel>
-						</Grid>
+								<StackPanel Grid.Column="1" Margin="12, 0, 0, 0">
+									<TextBlock Style="{DynamicResource SubtitleTextBlockStyle}" Text="{Binding Name}"/>
+									<TextBlock Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding Description}"/>
+								</StackPanel>
+								<StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Bottom">
+									<Button FontFamily="Segoe Fluent Icons" Margin="0, 0, 4, 0" Content="&#xEA80;"/>
+									<Button FontFamily="Segoe Fluent Icons" Content="&#xE72E;"/>
+								</StackPanel>
+							</Grid>
+						</Border>
 					</DataTemplate>
 				</ContentControl.ContentTemplate>
 			</ContentControl>
 		</Grid>
 
 	</Border>
-	
+
 
 </Window>
