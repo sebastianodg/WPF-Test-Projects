@@ -16,7 +16,9 @@ public class MainWindowVM
 			Name = "Layer 1",
 			Description = "First Test Layer",
 			Color = new SolidColorBrush(Colors.Black),
-			Enabled = true,
+			Visible = true,
+			Locked = false,
+			Current = true,
 		};
 
 		this.CadLayersList = new List<DtCadLayer>()
@@ -26,21 +28,27 @@ public class MainWindowVM
 				Name = "Layer 1",
 				Description = "First Test Layer",
 				Color = new SolidColorBrush(Colors.Black),
-				Enabled = true,
+				Visible = true,
+				Locked = false,
+				Current = true,
 			},
 			new DtCadLayer()
 			{
 				Name = "Layer 2",
 				Description = "Second Test Layer",
-				Color = new SolidColorBrush(Colors.Red),
-				Enabled = false,
+				Color = new SolidColorBrush(Colors.Orange),
+				Visible = false,
+				Locked = false,
+				Current = false,
 			},
 			new DtCadLayer()
 			{
 				Name = "Layer 3",
 				Description = "Third Test Layer",
 				Color = new SolidColorBrush(Colors.DarkViolet),
-				Enabled = true,
+				Visible = true,
+				Locked = true,
+				Current = false,
 			},
 		};
 	}

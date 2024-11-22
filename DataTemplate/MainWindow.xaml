@@ -6,55 +6,78 @@
         xmlns:local="clr-namespace:DataTemplate"
         mc:Ignorable="d"
         Title="MainWindow"
-		    Width="960"
+		    Width="720"
 				Height="340"
 				WindowStartupLocation="CenterScreen">
 
 	<Window.Resources>
 
+		<!--#region Value Converters -->
+		<local:CurrentValueConverter x:Key="CurrentVC"/>
+		<local:VisibleValueConverter x:Key="VisibleVC"/>
+		<local:LockedValueConverter x:Key="LockedVC"/>
+		<!--#endregion-->
+		
+		<!--#region Stile per il pulsante che controlla la visibilità del layer -->
+		<Style x:Key="LayerVisibilityButton" TargetType="Button">
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Locked}" Value="True">
+					<Setter Property="Content" Value="&#xE708;"/>
+				</DataTrigger>
+				<DataTrigger Binding="{Binding Locked}" Value="False">
+					<Setter Property="Content" Value="&#xE706;"/>
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+		<!--#endregion-->
+
+		<!--#region DataTemplate per l'elemento rappresentante un layer  -->
 		<DataTemplate x:Key="LayerDataTemplate">
 
 			<Grid>
-				<Border CornerRadius="{DynamicResource ControlCornerRadius}" Padding="4" HorizontalAlignment="Stretch">
 
-					<Grid Height="48">
+				<Border Background="{DynamicResource CardStrokeColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}" Padding="4">
+
+					<Grid>
 						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="32"/>
-							<ColumnDefinition Width="4"/>
-							<ColumnDefinition Width="48"/>
+							<ColumnDefinition Width="40"/>
 							<ColumnDefinition Width="*"/>
 							<ColumnDefinition Width="Auto"/>
 						</Grid.ColumnDefinitions>
 
-						<Button Grid.Column="0" Height="48" FontFamily="Segoe Fluent Icons" FontSize="9" Content="&#xF5B0;"/>
-
-						<Grid Grid.Column="2">
+						<Grid Grid.Column="0">
 							<Button Background="{Binding Color}"
 											BorderBrush="{DynamicResource TextFillColorSecondaryBrush}"
-											BorderThickness="2" FontFamily="Segoe Fluent Icons" Content="&#xE790;" Width="48" Height="48"/>
+											BorderThickness="2" FontFamily="Segoe Fluent Icons" Content="&#xE790;" Width="40" Height="32"/>
 						</Grid>
 
-						<StackPanel Grid.Column="3" VerticalAlignment="Center" Margin="8, 0, 0, 0">
+						<StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="8, 0, 0, 0">
 							<TextBlock Style="{DynamicResource BodyTextBlockStyle}" Text="{Binding Name}"/>
 							<TextBlock Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding Description}"/>
 						</StackPanel>
 
-						<Grid Grid.Column="4">
+						<Grid Grid.Column="2">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition/>
 								<ColumnDefinition Width="4"/>
 								<ColumnDefinition/>
+								<ColumnDefinition Width="4"/>
+								<ColumnDefinition/>
 							</Grid.ColumnDefinitions>
-							<Button Grid.Column="0" VerticalAlignment="Bottom" FontFamily="Segoe Fluent Icons" Content="&#xEA80;"/>
-							<Button Grid.Column="2" VerticalAlignment="Bottom" FontFamily="Segoe Fluent Icons" Content="&#xE72E;"/>
+							<Button Grid.Column="0" VerticalAlignment="Bottom" FontFamily="Segoe Fluent Icons" d:Content="&#xECCA;" Content="{Binding Current, Converter={StaticResource CurrentVC}}"/>
+							<Button Grid.Column="2" VerticalAlignment="Bottom" FontFamily="Segoe Fluent Icons" d:Content="&#xE706;" Content="{Binding Visible, Converter={StaticResource VisibleVC}}"/>
+							<Button Grid.Column="4" VerticalAlignment="Bottom" FontFamily="Segoe Fluent Icons" d:Content="&#xE70F;" Content="{Binding Locked, Converter={StaticResource LockedVC}}"/>
+
 						</Grid>
 
 					</Grid>
 
 				</Border>
+
 			</Grid>
 
 		</DataTemplate>
+		<!--#endregion-->
 
 	</Window.Resources>
 
