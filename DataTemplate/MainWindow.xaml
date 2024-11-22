@@ -34,18 +34,21 @@
 			<ContentControl Grid.Row="2" Grid.Column="0" Content="{Binding CadLayer}" VerticalAlignment="Center">
 				<ContentControl.ContentTemplate>
 					<DataTemplate>
-						<Border Background="{DynamicResource ControlFillColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}" Padding="8">
+						<Border Background="{DynamicResource CardStrokeColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}" Padding="4">
 							<Grid Height="48">
 								<Grid.ColumnDefinitions>
 									<ColumnDefinition Width="48"/>
 									<ColumnDefinition Width="*"/>
 									<ColumnDefinition Width="Auto"/>
 								</Grid.ColumnDefinitions>
-								<Border Grid.Column="0"
+								<Grid Grid.Column="0">
+									<Button Background="{DynamicResource AccentTextFillColorTertiaryBrush}" BorderBrush="{DynamicResource TextFillColorSecondaryBrush}" BorderThickness="2" FontFamily="Segoe Fluent Icons" Content="&#xE790;" Width="48" Height="48"/>
+								</Grid>
+								<!--<Border Grid.Column="0"
 											Background="{DynamicResource AccentTextFillColorTertiaryBrush}"
 											BorderBrush="{DynamicResource TextFillColorPrimaryBrush}"
 											BorderThickness="2"
-											CornerRadius="{DynamicResource ControlCornerRadius}"/>
+											CornerRadius="{DynamicResource ControlCornerRadius}"/>-->
 								<StackPanel Grid.Column="1" Margin="12, 0, 0, 0">
 									<TextBlock Style="{DynamicResource SubtitleTextBlockStyle}" Text="{Binding Name}"/>
 									<TextBlock Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding Description}"/>
