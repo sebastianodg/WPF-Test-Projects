@@ -14,44 +14,46 @@
 		
 		<DataTemplate x:Key="LayerDataTemplate">
 
-			<Border Background="{DynamicResource CardStrokeColorDefaultBrush}" CornerRadius="{DynamicResource ControlCornerRadius}" Padding="4">
-				
-				<Grid Height="48">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="32"/>
-						<ColumnDefinition Width="4"/>
-						<ColumnDefinition Width="48"/>
-						<ColumnDefinition Width="*"/>
-						<ColumnDefinition Width="Auto"/>
-					</Grid.ColumnDefinitions>
+			<Grid>
+				<Border CornerRadius="{DynamicResource ControlCornerRadius}" Padding="4" HorizontalAlignment="Stretch">
 
-					<Button Grid.Column="0" Height="48" FontFamily="Segoe Fluent Icons" FontSize="9" Content="&#xF5B0;"/>
+					<Grid Height="48">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="32"/>
+							<ColumnDefinition Width="4"/>
+							<ColumnDefinition Width="48"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
 
-					<Grid Grid.Column="2">
-						<Button Background="{DynamicResource AccentTextFillColorTertiaryBrush}"
+						<Button Grid.Column="0" Height="48" FontFamily="Segoe Fluent Icons" FontSize="9" Content="&#xF5B0;"/>
+
+						<Grid Grid.Column="2">
+							<Button Background="{DynamicResource AccentTextFillColorTertiaryBrush}"
 													BorderBrush="{DynamicResource TextFillColorSecondaryBrush}"
 													BorderThickness="2" FontFamily="Segoe Fluent Icons" Content="&#xE790;" Width="48" Height="48"/>
+						</Grid>
+
+						<StackPanel Grid.Column="3" VerticalAlignment="Center" Margin="8, 0, 0, 0">
+							<TextBlock Style="{DynamicResource BodyTextBlockStyle}" Text="{Binding Name}"/>
+							<TextBlock Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding Description}"/>
+						</StackPanel>
+
+						<Grid Grid.Column="4">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition/>
+								<ColumnDefinition Width="4"/>
+								<ColumnDefinition/>
+							</Grid.ColumnDefinitions>
+							<Button Grid.Column="0" VerticalAlignment="Bottom" FontFamily="Segoe Fluent Icons" Content="&#xEA80;"/>
+							<Button Grid.Column="2" VerticalAlignment="Bottom" FontFamily="Segoe Fluent Icons" Content="&#xE72E;"/>
+						</Grid>
+
 					</Grid>
 
-					<StackPanel Grid.Column="3" VerticalAlignment="Center" Margin="8, 0, 0, 0">
-						<TextBlock Style="{DynamicResource BodyTextBlockStyle}" Text="{Binding Name}"/>
-						<TextBlock Style="{DynamicResource CaptionTextBlockStyle}" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding Description}"/>
-					</StackPanel>
+				</Border>
+			</Grid>
 
-					<Grid Grid.Column="4">
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition/>
-							<ColumnDefinition Width="4"/>
-							<ColumnDefinition/>
-						</Grid.ColumnDefinitions>
-						<Button Grid.Column="0" VerticalAlignment="Bottom" FontFamily="Segoe Fluent Icons" Content="&#xEA80;"/>
-						<Button Grid.Column="2" VerticalAlignment="Bottom" FontFamily="Segoe Fluent Icons" Content="&#xE72E;"/>
-					</Grid>
-					
-				</Grid>
-				
-			</Border>
-			
 		</DataTemplate>
 		
 	</Window.Resources>
@@ -74,7 +76,9 @@
 			<TextBlock Grid.Row="0" Grid.Column="2" Style="{DynamicResource TitleTextBlockStyle}" Text="Multiple Items"/>
 
 			<ContentControl Grid.Row="2" Grid.Column="0" Content="{Binding CadLayer}" ContentTemplate="{StaticResource LayerDataTemplate}"/>
-			
+
+			<ListView Grid.Row="2" Grid.Column="2" ItemsSource="{Binding CadLayersList}" ItemTemplate="{StaticResource LayerDataTemplate}"/>
+
 		</Grid>
 
 	</Border>
