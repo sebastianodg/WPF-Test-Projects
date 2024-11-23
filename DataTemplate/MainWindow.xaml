@@ -64,9 +64,16 @@
 								<ColumnDefinition Width="4"/>
 								<ColumnDefinition/>
 							</Grid.ColumnDefinitions>
-							<Button Grid.Column="0" VerticalAlignment="Bottom" FontFamily="Segoe Fluent Icons" d:Content="&#xECCA;" Content="{Binding Current, Converter={StaticResource CurrentVC}}"/>
-							<Button Grid.Column="2" VerticalAlignment="Bottom" FontFamily="Segoe Fluent Icons" d:Content="&#xE706;" Content="{Binding Visible, Converter={StaticResource VisibleVC}}"/>
-							<Button Grid.Column="4" VerticalAlignment="Bottom" FontFamily="Segoe Fluent Icons" d:Content="&#xE70F;" Content="{Binding Locked, Converter={StaticResource LockedVC}}"/>
+							<Button Grid.Column="0" VerticalAlignment="Bottom" FontFamily="Segoe Fluent Icons" d:Content="&#xECCA;" Content="{Binding Current, Converter={StaticResource CurrentVC}}"
+											Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.SetCurrentLayerCommand}"
+											CommandParameter="{Binding}"/>
+							<Button Grid.Column="2" VerticalAlignment="Bottom" FontFamily="Segoe Fluent Icons" d:Content="&#xE706;" Content="{Binding Visible, Converter={StaticResource VisibleVC}}"
+											Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.ToggleLayerVisibleCommand}"
+											CommandParameter="{Binding}"/>
+							<Button Grid.Column="4" VerticalAlignment="Bottom" FontFamily="Segoe Fluent Icons" d:Content="&#xE70F;" Content="{Binding Locked, Converter={StaticResource LockedVC}}"
+											Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.ToggleLayerLockedCommand}"
+											CommandParameter="{Binding}"/>
+
 
 						</Grid>
 

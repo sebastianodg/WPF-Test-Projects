@@ -1,13 +1,16 @@
-﻿using DataTemplate.Model;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using DataTemplate.Model;
+using System.Collections.ObjectModel;
 using System.Windows.Media;
 
 namespace DataTemplate;
 
-public class MainWindowVM
+public partial class MainWindowVM : ObservableObject
 {
 	public DtCadLayer CadLayer { get; set; }
 
-	public List<DtCadLayer> CadLayersList { get; set; }
+	public ObservableCollection<DtCadLayer> CadLayersList { get; set; }
 
 	public MainWindowVM()
 	{
@@ -21,7 +24,7 @@ public class MainWindowVM
 			Current = true,
 		};
 
-		this.CadLayersList = new List<DtCadLayer>()
+		this.CadLayersList = new ObservableCollection<DtCadLayer>()
 		{
 			new DtCadLayer()
 			{
@@ -50,6 +53,42 @@ public class MainWindowVM
 				Locked = true,
 				Current = false,
 			},
+			new DtCadLayer()
+			{
+				Name = "Layer 4",
+				Description = "Fourth Test Layer",
+				Color = new SolidColorBrush(Colors.DarkViolet),
+				Visible = true,
+				Locked = false,
+				Current = false,
+			},
 		};
+	}
+
+	[RelayCommand]
+	public void SetCurrentLayer(DtCadLayer clickedLayer)
+	{
+		if (clickedLayer == null)
+			return;
+
+		// Se il layer è già il livello corrente, non posso fare nulla
+		if (clickedLayer.Current)
+			return;
+
+		// Impostazione del layer clickato come layer corrente
+		foreach (DtCadLayer layer in this.CadLayersList)
+			layer.Current = layer == clickedLayer;
+	}
+
+	[RelayCommand]
+	public void ToggleLayerVisible(DtCadLayer clickedLayer)
+	{
+		clickedLayer.Visible = !clickedLayer.Visible;
+	}
+
+	[RelayCommand]
+	public void ToggleLayerLocked(DtCadLayer clickedLayer)
+	{
+		clickedLayer.Locked = !clickedLayer.Locked;
 	}
 }

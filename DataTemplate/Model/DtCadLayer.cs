@@ -1,15 +1,28 @@
-﻿using System.Windows.Media;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Windows.Media;
 
 namespace DataTemplate.Model;
 
-public class DtCadLayer
+public partial class DtCadLayer : ObservableObject
 {
-	public String Name { get; set; }
-	public String Description { get; set; }
-	public SolidColorBrush Color { get; set; }
-	public Boolean Visible { get; set; }
-	public Boolean Locked { get; set; }
-	public Boolean Current { get; set; }
+	[ObservableProperty]
+	private String _name;
+
+	[ObservableProperty]
+	private String _description;
+
+	[ObservableProperty]
+	private SolidColorBrush _color;
+
+	[ObservableProperty]
+	private Boolean _visible;
+
+	[ObservableProperty]
+	private Boolean _locked;
+
+	[ObservableProperty]
+	private Boolean _current;
 
 	public DtCadLayer()
 	{
