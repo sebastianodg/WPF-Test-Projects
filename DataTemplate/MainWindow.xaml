@@ -17,19 +17,6 @@
 		<local:VisibleValueConverter x:Key="VisibleVC"/>
 		<local:LockedValueConverter x:Key="LockedVC"/>
 		<!--#endregion-->
-		
-		<!--#region Stile per il pulsante che controlla la visibilità del layer -->
-		<Style x:Key="LayerVisibilityButton" TargetType="Button">
-			<Style.Triggers>
-				<DataTrigger Binding="{Binding Locked}" Value="True">
-					<Setter Property="Content" Value="&#xE708;"/>
-				</DataTrigger>
-				<DataTrigger Binding="{Binding Locked}" Value="False">
-					<Setter Property="Content" Value="&#xE706;"/>
-				</DataTrigger>
-			</Style.Triggers>
-		</Style>
-		<!--#endregion-->
 
 		<!--#region DataTemplate per l'elemento rappresentante un layer  -->
 		<DataTemplate x:Key="LayerDataTemplate">
