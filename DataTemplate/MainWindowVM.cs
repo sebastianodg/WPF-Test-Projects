@@ -77,7 +77,15 @@ public partial class MainWindowVM : ObservableObject
 
 		// Impostazione del layer clickato come layer corrente
 		foreach (DtCadLayer layer in this.CadLayersList)
+		{
 			layer.Current = layer == clickedLayer;
+
+			if (layer.Current)
+			{
+				layer.Locked = false;
+				layer.Visible = true;
+			}
+		}
 	}
 
 	[RelayCommand]
