@@ -1,0 +1,24 @@
+﻿<Window x:Class="ListViewGrid.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ListViewGrid"
+        mc:Ignorable="d"
+				WindowStartupLocation="CenterScreen"
+        Title="ListView Grid View" Height="256" Width="512">
+
+	<Grid>
+
+		<ListView ItemsSource="{Binding Persons}">
+			<ListView.View>
+				<GridView>
+					<GridViewColumn Header="First name" Width="150" DisplayMemberBinding="{Binding FirstName}"/>
+					<GridViewColumn Header="Last name" Width="150" DisplayMemberBinding="{Binding LastName}"/>
+				</GridView>
+			</ListView.View>
+		</ListView>
+		
+	</Grid>
+	
+</Window>
