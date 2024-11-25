@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTemplate", "DataTemplat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListViewGrid", "ListViewGrid\ListViewGrid.csproj", "{CA99FA26-47D1-4938-819A-D540A5CBEC37}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterDetails", "MasterDetails\MasterDetails.csproj", "{1A9CD05B-9B3C-43A4-8A5C-45C7086109ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CA99FA26-47D1-4938-819A-D540A5CBEC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA99FA26-47D1-4938-819A-D540A5CBEC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA99FA26-47D1-4938-819A-D540A5CBEC37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A9CD05B-9B3C-43A4-8A5C-45C7086109ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A9CD05B-9B3C-43A4-8A5C-45C7086109ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A9CD05B-9B3C-43A4-8A5C-45C7086109ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A9CD05B-9B3C-43A4-8A5C-45C7086109ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
