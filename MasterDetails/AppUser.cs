@@ -20,7 +20,10 @@ public partial class AppUser : ObservableObject
 	private String _email;
 
 	[ObservableProperty]
-	private Boolean _IsAdministrator;
+	private Boolean _isAdministrator;
+
+	[ObservableProperty]
+	private String _imagePath;
 
 	public AppUser()
 	{
@@ -29,16 +32,18 @@ public partial class AppUser : ObservableObject
 		this._firstName = String.Empty;
 		this._lastName = String.Empty;
 		this._email = String.Empty;
-		this._IsAdministrator = false;
+		this._isAdministrator = false;
+		this._imagePath = String.Empty;
 	}
 
-	public AppUser(String userName, String password, String firstName, String lastName, String email, Boolean isAdministrator)
+	public AppUser(String userName, String password, String firstName, String lastName, String email, Boolean isAdministrator, String imagePath)
 	{
 		this._userName = userName;
 		this._password = password;
 		this._firstName = firstName;
 		this._lastName = lastName;
 		this._email = email;
-		this._IsAdministrator = isAdministrator;
+		this._isAdministrator = isAdministrator;
+		this._imagePath = imagePath;
 	}
 }

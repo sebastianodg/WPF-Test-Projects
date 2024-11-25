@@ -16,7 +16,7 @@
 
 								 Icon="/Resources/Icon.ico"
                  Width="720"
-                 Height="640"
+                 Height="800"
                  WindowStartupLocation="CenterScreen"
                  Title="WPF Master - Details">
 
@@ -36,9 +36,9 @@
 
 			<Grid>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="1*"/>
-					<ColumnDefinition Width="24"/>
 					<ColumnDefinition Width="2*"/>
+					<ColumnDefinition Width="24"/>
+					<ColumnDefinition Width="3*"/>
 				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
 					<RowDefinition Height="*"/>
@@ -73,7 +73,9 @@
 
 					<ui:TextBlock FontTypography="Title" Text="Details" Margin="0, 0, 0, 24"/>
 
-					<ui:TextBlock Text="Username" Margin="0, 0, 0, 4"/>
+					<ui:Image Source="{Binding ImagePath}" Width="150" Height="150" CornerRadius="10" BorderBrush="{DynamicResource TextFillColorPrimaryBrush}" BorderThickness="2"/>
+
+					<ui:TextBlock Text="Username" Margin="0, 16, 0, 4"/>
 					<ui:TextBox Text="{Binding UserName}"/>
 
 					<ui:TextBlock Text="Password" Margin="0, 16, 0, 4"/>

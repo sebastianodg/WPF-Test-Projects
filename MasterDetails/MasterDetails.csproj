@@ -9,7 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\DavidGilmour.jpg" />
+    <None Remove="Resources\FrancoBattiato.jpg" />
     <None Remove="Resources\Icon.ico" />
+    <None Remove="Resources\JanisJoplin.jpg" />
+    <None Remove="Resources\JohnLeeHooker.jpg" />
+    <None Remove="Resources\MarkKnopfler.jpg" />
+    <None Remove="Resources\ToriAmos.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,7 +24,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\DavidGilmour.jpg" />
+    <Resource Include="Resources\FrancoBattiato.jpg" />
     <Resource Include="Resources\Icon.ico" />
+    <Resource Include="Resources\JanisJoplin.jpg" />
+    <Resource Include="Resources\JohnLeeHooker.jpg" />
+    <Resource Include="Resources\MarkKnopfler.jpg" />
+    <Resource Include="Resources\ToriAmos.jpg" />
   </ItemGroup>
 
 </Project>
