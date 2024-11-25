@@ -19,6 +19,9 @@
                  Height="800"
                  WindowStartupLocation="CenterScreen"
                  Title="WPF Master - Details">
+	
+	<ui:FluentWindow.Resources>
+	</ui:FluentWindow.Resources>
 
 	<Grid>
 		<Grid.RowDefinitions>
@@ -52,7 +55,8 @@
 					<ui:TextBlock Text="Search" Margin="0, 0, 0, 4"/>
 					<ui:AutoSuggestBox/>
 
-					<ui:ListView x:Name="_usersListView" ItemsSource="{Binding Users}" BorderThickness="0" Margin="0, 16, 0, 0">
+					<ui:TextBlock Text="Users list" Margin="0, 16, 0, 4"/>
+					<ui:ListView x:Name="_usersListView" ItemsSource="{Binding Users}" SelectedIndex="0" BorderThickness="0">
 						<ui:ListView.ItemTemplate>
 							<DataTemplate>
 								<Grid>
@@ -63,30 +67,22 @@
 
 									<ui:Image Grid.Column="0" Source="{Binding ImagePath}" Width="40" Height="40" CornerRadius="20" BorderThickness="1" BorderBrush="{DynamicResource TextFillColorPrimaryBrush}"/>
 
-									<StackPanel Grid.Column="1" Orientation="Vertical">
-										<ui:TextBlock Text="{Binding FirstName}" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
-										<ui:TextBlock Text="{Binding UserName}" Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+									<StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+										<ui:TextBlock Style="{DynamicResource BodyTextBlockStyle}">
+											<TextBlock.Text>
+												<MultiBinding StringFormat="{}{0} {1}">
+													<Binding Path="FirstName"/>
+													<Binding Path="LastName"/>
+												</MultiBinding>
+											</TextBlock.Text>
+										</ui:TextBlock>
+										<ui:TextBlock Style="{DynamicResource CaptionTextBlockStyle}" Text="{Binding UserName}" Foreground="{DynamicResource TextFillColorDisabledBrush}"/>
 									</StackPanel>
-									
+
 								</Grid>
 							</DataTemplate>
 						</ui:ListView.ItemTemplate>
 
-						
-						<!--<ui:ListView.View>
-							<ui:GridView>
-								<ui:GridViewColumn Header="Full name" Width="Auto">
-									<ui:GridViewColumn.DisplayMemberBinding>
-										<MultiBinding StringFormat="{}{0} {1}">
-											<Binding Path="FirstName"/>
-											<Binding Path="LastName"/>
-										</MultiBinding>
-									</ui:GridViewColumn.DisplayMemberBinding>
-								</ui:GridViewColumn>
-							</ui:GridView>
-						</ui:ListView.View>-->
-						
-						
 					</ui:ListView>
 
 				</StackPanel>
@@ -95,7 +91,9 @@
 
 					<ui:TextBlock FontTypography="Title" Text="Details" Margin="0, 0, 0, 24"/>
 
-					<ui:Image Source="{Binding ImagePath}" Width="150" Height="150" CornerRadius="10" BorderBrush="{DynamicResource TextFillColorPrimaryBrush}" BorderThickness="2"/>
+					<ui:Image x:Name="_detailsUserImage" Source="{Binding ImagePath}"
+										Width="150" Height="150" CornerRadius="10"
+										BorderBrush="{DynamicResource TextFillColorPrimaryBrush}" BorderThickness="2"/>
 
 					<ui:TextBlock Text="Username" Margin="0, 16, 0, 4"/>
 					<ui:TextBox Text="{Binding UserName}"/>

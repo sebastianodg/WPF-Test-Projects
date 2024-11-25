@@ -15,6 +15,7 @@
     <None Remove="Resources\JanisJoplin.jpg" />
     <None Remove="Resources\JohnLeeHooker.jpg" />
     <None Remove="Resources\MarkKnopfler.jpg" />
+    <None Remove="Resources\NoImage.jpg" />
     <None Remove="Resources\ToriAmos.jpg" />
   </ItemGroup>
 
@@ -30,6 +31,7 @@
     <Resource Include="Resources\JanisJoplin.jpg" />
     <Resource Include="Resources\JohnLeeHooker.jpg" />
     <Resource Include="Resources\MarkKnopfler.jpg" />
+    <Resource Include="Resources\NoImage.jpg" />
     <Resource Include="Resources\ToriAmos.jpg" />
   </ItemGroup>
 
