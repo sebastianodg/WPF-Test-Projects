@@ -35,6 +35,8 @@
 			</ui:TitleBar.Icon>
 		</ui:TitleBar>
 
+		<ContentPresenter x:Name="RootContentDialogPresenter" Grid.Row="1"/>
+
 		<Border Grid.Row="1" Margin="16, 0, 16, 16">
 
 			<Grid>
@@ -47,7 +49,7 @@
 					<RowDefinition Height="*"/>
 					<RowDefinition Height="32"/>
 				</Grid.RowDefinitions>
-
+				
 				<StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
 
 					<ui:TextBlock FontTypography="Title" Text="Users" Margin="0, 0, 0, 24"/>
@@ -138,7 +140,7 @@
 						</StackPanel>
 					</ui:Button>
 
-					<ui:Button Appearance="Primary" Margin="8, 0, 0, 0">
+					<ui:Button Appearance="Primary" Margin="8, 0, 0, 0" Click="Prova">
 						<StackPanel Orientation="Horizontal">
 							<ui:SymbolIcon Symbol="Delete32" Margin="0, 0, 8, 0"/>
 							<ui:TextBlock Text="Delete"/>
