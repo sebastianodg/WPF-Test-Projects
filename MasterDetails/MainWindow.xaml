@@ -16,10 +16,10 @@
 
 								 Icon="/Resources/Icon.ico"
                  Width="720"
-                 Height="800"
+                 Height="770"
                  WindowStartupLocation="CenterScreen"
                  Title="WPF Master - Details">
-	
+
 	<ui:FluentWindow.Resources>
 	</ui:FluentWindow.Resources>
 
@@ -27,6 +27,7 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="1*"/>
+			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
 
 		<ui:TitleBar x:Name="TitleBar" Title="WPF Master - Details" Grid.Row="0" CloseWindowByDoubleClickOnIcon="True">
@@ -35,125 +36,126 @@
 			</ui:TitleBar.Icon>
 		</ui:TitleBar>
 
-		<ContentPresenter x:Name="RootContentDialogPresenter" Grid.Row="1"/>
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="2*"/>
+				<ColumnDefinition Width="16"/>
+				<ColumnDefinition Width="3*"/>
+			</Grid.ColumnDefinitions>
 
-		<Border Grid.Row="1" Margin="16, 0, 16, 16">
+			<StackPanel Grid.Column="0" Orientation="Vertical" Margin="16, 16, 0, 16">
 
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="2*"/>
-					<ColumnDefinition Width="24"/>
-					<ColumnDefinition Width="3*"/>
-				</Grid.ColumnDefinitions>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="*"/>
-					<RowDefinition Height="32"/>
-				</Grid.RowDefinitions>
-				
-				<StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+				<ui:TextBlock FontTypography="Title" Text="Users" Margin="0, 0, 0, 24"/>
 
-					<ui:TextBlock FontTypography="Title" Text="Users" Margin="0, 0, 0, 24"/>
+				<ui:TextBlock Text="Search" Margin="0, 0, 0, 4"/>
+				<ui:AutoSuggestBox/>
 
-					<ui:TextBlock Text="Search" Margin="0, 0, 0, 4"/>
-					<ui:AutoSuggestBox/>
+				<ui:TextBlock Text="Users list" Margin="0, 16, 0, 4"/>
+				<ui:ListView x:Name="_usersListView" ItemsSource="{Binding Users}" SelectedIndex="0" BorderThickness="0">
+					<ui:ListView.ItemTemplate>
+						<DataTemplate>
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="64"/>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
 
-					<ui:TextBlock Text="Users list" Margin="0, 16, 0, 4"/>
-					<ui:ListView x:Name="_usersListView" ItemsSource="{Binding Users}" SelectedIndex="0" BorderThickness="0">
-						<ui:ListView.ItemTemplate>
-							<DataTemplate>
-								<Grid>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="64"/>
-										<ColumnDefinition Width="*"/>
-									</Grid.ColumnDefinitions>
+								<ui:Image Grid.Column="0" Source="{Binding ImagePath}" Width="40" Height="40" CornerRadius="20" BorderThickness="1" BorderBrush="{DynamicResource TextFillColorPrimaryBrush}"/>
 
-									<ui:Image Grid.Column="0" Source="{Binding ImagePath}" Width="40" Height="40" CornerRadius="20" BorderThickness="1" BorderBrush="{DynamicResource TextFillColorPrimaryBrush}"/>
+								<StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+									<ui:TextBlock Style="{DynamicResource BodyTextBlockStyle}">
+										<TextBlock.Text>
+											<MultiBinding StringFormat="{}{0} {1}">
+												<Binding Path="FirstName"/>
+												<Binding Path="LastName"/>
+											</MultiBinding>
+										</TextBlock.Text>
+									</ui:TextBlock>
+									<ui:TextBlock Style="{DynamicResource CaptionTextBlockStyle}" Text="{Binding UserName}" Foreground="{DynamicResource TextFillColorDisabledBrush}"/>
+								</StackPanel>
 
-									<StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
-										<ui:TextBlock Style="{DynamicResource BodyTextBlockStyle}">
-											<TextBlock.Text>
-												<MultiBinding StringFormat="{}{0} {1}">
-													<Binding Path="FirstName"/>
-													<Binding Path="LastName"/>
-												</MultiBinding>
-											</TextBlock.Text>
-										</ui:TextBlock>
-										<ui:TextBlock Style="{DynamicResource CaptionTextBlockStyle}" Text="{Binding UserName}" Foreground="{DynamicResource TextFillColorDisabledBrush}"/>
-									</StackPanel>
+							</Grid>
+						</DataTemplate>
+					</ui:ListView.ItemTemplate>
 
-								</Grid>
-							</DataTemplate>
-						</ui:ListView.ItemTemplate>
+				</ui:ListView>
 
-					</ui:ListView>
+			</StackPanel>
 
-				</StackPanel>
+			<Border Grid.Column="2" Background="{DynamicResource LayerFillColorDefaultBrush}" Padding="16">
 
-				<StackPanel Grid.Row="0" Grid.Column="2" Orientation="Vertical" DataContext="{Binding ElementName=_usersListView, Path=SelectedItem}">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
 
-					<ui:TextBlock FontTypography="Title" Text="Details" Margin="0, 0, 0, 24"/>
+					<StackPanel Grid.Row="0" Orientation="Vertical" DataContext="{Binding ElementName=_usersListView, Path=SelectedItem}">
 
-					<ui:Image x:Name="_detailsUserImage" Source="{Binding ImagePath}"
+						<ui:TextBlock FontTypography="Title" Text="User details" Margin="0, 0, 0, 24"/>
+
+						<ui:Image x:Name="_detailsUserImage" Source="{Binding ImagePath}"
 										Width="150" Height="150" CornerRadius="10"
 										BorderBrush="{DynamicResource TextFillColorPrimaryBrush}" BorderThickness="2"/>
 
-					<ui:TextBlock Text="Username" Margin="0, 16, 0, 4"/>
-					<ui:TextBox Text="{Binding UserName}"/>
+						<ui:TextBlock Text="Username" Margin="0, 16, 0, 4"/>
+						<ui:TextBox Text="{Binding UserName}"/>
 
-					<ui:TextBlock Text="Password" Margin="0, 16, 0, 4"/>
-					<ui:PasswordBox Password="{Binding Password}"/>
+						<ui:TextBlock Text="Password" Margin="0, 16, 0, 4"/>
+						<ui:PasswordBox Password="{Binding Password}"/>
 
-					<ui:TextBlock Text="First name" Margin="0, 16, 0, 4"/>
-					<ui:TextBox Text="{Binding FirstName}"/>
+						<ui:TextBlock Text="First name" Margin="0, 16, 0, 4"/>
+						<ui:TextBox Text="{Binding FirstName}"/>
 
-					<ui:TextBlock Text="Last name" Margin="0, 16, 0, 4"/>
-					<ui:TextBox Text="{Binding LastName}"/>
+						<ui:TextBlock Text="Last name" Margin="0, 16, 0, 4"/>
+						<ui:TextBox Text="{Binding LastName}"/>
 
-					<ui:TextBlock Text="E-mail" Margin="0, 16, 0, 4"/>
-					<ui:TextBox Text="{Binding Email}"/>
+						<ui:TextBlock Text="E-mail" Margin="0, 16, 0, 4"/>
+						<ui:TextBox Text="{Binding Email}"/>
 
-					<ui:TextBlock Text="Administrator" Margin="0, 16, 0, 4"/>
-					<ui:ToggleSwitch IsChecked="{Binding IsAdministrator}"/>
+						<ui:TextBlock Text="Administrator" Margin="0, 16, 0, 4"/>
+						<ui:ToggleSwitch IsChecked="{Binding IsAdministrator}"/>
 
-				</StackPanel>
+					</StackPanel>
 
-				<StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Right">
+					<StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
 
-					<ui:Button Margin="8, 0, 0, 0">
-						<StackPanel Orientation="Horizontal">
-							<ui:SymbolIcon Symbol="ArrowReset32" Margin="0, 0, 8, 0"/>
-							<ui:TextBlock Text="Reset"/>
-						</StackPanel>
-					</ui:Button>
+						<ui:Button Margin="8, 0, 0, 0">
+							<StackPanel Orientation="Horizontal">
+								<ui:SymbolIcon Symbol="ArrowReset32" Margin="0, 0, 8, 0"/>
+								<ui:TextBlock Text="Reset"/>
+							</StackPanel>
+						</ui:Button>
 
-					<ui:Button Margin="8, 0, 0, 0">
-						<StackPanel Orientation="Horizontal">
-							<ui:SymbolIcon Symbol="Add32" Margin="0, 0, 8, 0"/>
-							<ui:TextBlock Text="Add"/>
-						</StackPanel>
-					</ui:Button>
+						<ui:Button Margin="8, 0, 0, 0">
+							<StackPanel Orientation="Horizontal">
+								<ui:SymbolIcon Symbol="Add32" Margin="0, 0, 8, 0"/>
+								<ui:TextBlock Text="Add"/>
+							</StackPanel>
+						</ui:Button>
 
-					<ui:Button Margin="8, 0, 0, 0">
-						<StackPanel Orientation="Horizontal">
-							<ui:SymbolIcon Symbol="Checkmark32" Margin="0, 0, 8, 0"/>
-							<ui:TextBlock Text="Update"/>
-						</StackPanel>
-					</ui:Button>
+						<ui:Button Margin="8, 0, 0, 0">
+							<StackPanel Orientation="Horizontal">
+								<ui:SymbolIcon Symbol="Checkmark32" Margin="0, 0, 8, 0"/>
+								<ui:TextBlock Text="Update"/>
+							</StackPanel>
+						</ui:Button>
 
-					<ui:Button Appearance="Primary" Margin="8, 0, 0, 0" Click="Prova">
-						<StackPanel Orientation="Horizontal">
-							<ui:SymbolIcon Symbol="Delete32" Margin="0, 0, 8, 0"/>
-							<ui:TextBlock Text="Delete"/>
-						</StackPanel>
-					</ui:Button>
+						<ui:Button Appearance="Primary" Margin="8, 0, 0, 0" Click="Prova">
+							<StackPanel Orientation="Horizontal">
+								<ui:SymbolIcon Symbol="Delete32" Margin="0, 0, 8, 0"/>
+								<ui:TextBlock Text="Delete"/>
+							</StackPanel>
+						</ui:Button>
 
-				</StackPanel>
+					</StackPanel>
 
-			</Grid>
+				</Grid>
 
-		</Border>
+			</Border>
+
+		</Grid>
 
 	</Grid>
-
 
 </ui:FluentWindow>
